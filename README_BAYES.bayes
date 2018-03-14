@@ -1,0 +1,18 @@
+READ ME
+So you wanna be the best? The best there ever was? Well, you need the best of both words for that, friend.
+
+Under er det et utdrag frå byrjinga av both_words_sorted.bayes. Fila inneheld eit JSON-object.
+Fila er sortert etter "count" som alle under-objekt har. Størst fyrst.
+Så aller fyrst kjem "total_words_count" som inneheld metadata om heile lista.
+Unique er her antall unike ord i heile lista, count er antall ord, og prob er egenleg meiningsløs.
+Så følgjer "pos" og "neg" som er statsa for dei positive orda og dei negative. Dei har det same som "total_words_count" men her er "prob" meiningsfull. 
+
+
+Kvart ord er satt opp som følgjar: "CLASS:ord": {"count": tall, "class": class, "prob": desimaltal}
+Namnet på obj er satt opp som "CLASS:ord" (eks: "pos:the") for å gjere forskjell på ordet "the" som positiv og som negativ. "pos:the" inneheld info for "the" i positiv kontekst og "neg:the" er for "the" i negativ kontekst.
+"count" er antall gongar ordet har oppstått i klassa si. "pos:the" har ein count på 160463 og er difor brukt så mange gongar i positive tingingar. 
+Så har me "prob". Prob er sannsynlegheita at det ordet fins i si klasse. "prob" er ikkje ferdig utvikla enda, men kan iallefall brukast til å leike med.
+
+
+
+{"total_words_count": {"unique": 269071, "count": 5713167, "prob": 0E-1000026}, "pos": {"unique": 136071, "count": 2862401, "prob": 0.47848347056736961757650306026334874331951141357421875}, "neg": {"unique": 133000, "count": 2850766, "prob": 0.47653854627649383512988379152375273406505584716796875}, "pos:the": {"count": 160463, "class": "pos", "prob": 0.0268234062235571356358487804527612752281129360198974609375}, "neg:the": {"count": 156200, "class": "neg", "prob": 0.0261107966617175717150001190702823805622756481170654296875}, "pos:and": {"count": 84350, "class": "pos", "prob": 0.01410024141466788803744858427080544061027467250823974609375}, "pos:a": {"count": 78935, "class": "pos", "prob": 0.01319506178122635715876942441582286846823990345001220703125}, "neg:a": {"count": 77727, "class": "neg", "prob": 0.01299313066447707436246172818528066272847354412078857421875}, "pos:of": {"count": 74599, "class": "pos", "prob": 0.01247024942839118112625218515177039080299437046051025390625}, "neg:and": {"count": 70715, "class": "neg", "prob": 0.011820994082816498049748332732633571140468120574951171875}}
