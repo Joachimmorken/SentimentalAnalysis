@@ -10,8 +10,8 @@ with open("../../both_words_sorted.bayes", "r", encoding="utf8") as file:
 
 #Splits reviews up into an array of processable words
 def divide_and_conquer(doc):
-    exclude = [".", ",", "!", "?", "_", "=", "-", "<br>", "<br/>", "\\", "/", "(", ")", "<br", "br>", "<p>", "<>", "<",
-               ">"]
+    exclude = [".", ",", "!", "?", "_", "-", "<br>", "<br/>", "\\", "/", "(", ")", "<br", "br>", "<p>", "<>", "<", ">",
+               "\"", " "]
     new = []
 
     for w in doc.split():
@@ -46,14 +46,14 @@ def make_prediction(document):
         return "negative"
 
 
-poscount = 0
-path = "C:/Users/Fab/OneDrive/Skole/INFO284/1rstGroupAssingment/Data/test/neg"
+accuracy = 0
+path = ".../Data/test/pos"
 for filename in os.listdir(path):
     f = path + "/" + filename
     with open(f, "r", encoding="utf8") as doc:
-        poscount += 1 if (make_prediction(doc.read()) == "negative") else 0
+        accuracy += 0.008 if (make_prediction(doc.read()) == "positive") else 0
 
-print(poscount)
+print(accuracy)
 
 
 #   posProb *= list[classPosProb]
