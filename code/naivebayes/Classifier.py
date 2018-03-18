@@ -47,7 +47,7 @@ def make_prediction(document):
 
 
 poscount = 0
-path = "C:/Users/Fab/OneDrive/Skole/INFO284/1rstGroupAssingment/Data/test/neg"
+path = "E:/Markus/Skule/UiB/V18/INFO284/Oblig/7zip/train/neg"
 for filename in os.listdir(path):
     f = path + "/" + filename
     with open(f, "r", encoding="utf8") as doc:
