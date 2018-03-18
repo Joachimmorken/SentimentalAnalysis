@@ -219,11 +219,19 @@ def classifier(document, prob_negative, prob_positive, vocabulary):
 
 
 
-accuracy = 0
-path = "../../../Data/test/pos"
-for filename in os.listdir(path):
-    f = path + "/" + filename
-    with open(f, "r", encoding="utf8", errors="ignore") as doc:
-        accuracy += 0.008 if (classifier(doc.read(), prob_positive, prob_negative, vocabulary) == "positive") else 0
-print(accuracy)
+def accuracy ():
+    accuracy = 0
+    path = "../../../Data/test/pos"
+    for filename in os.listdir(path):
+        f = path + "/" + filename
+        with open(f, "r", encoding="utf8", errors="ignore") as doc:
+            accuracy += 0.008 if (classifier(doc.read(), prob_positive, prob_negative, vocabulary) == "positive") else 0
+    print(accuracy)
 
+
+
+document = ""
+def make_prediction(document):
+    print(classifier(document, prob_negative, prob_positive, vocabulary))
+
+make_prediction(document)
