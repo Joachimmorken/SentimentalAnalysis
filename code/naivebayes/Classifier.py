@@ -1,9 +1,10 @@
 import json
 import math
 
+#Imports vocabulary with stored probabilities for our classifier
 vocabulary = json.load(open("../../both_words_sorted_fix.bayes"))
 
-
+#Splits reviews up into an array of processable words
 def divide_and_conquer(doc):
     exclude = [".", ",", "!", "?", "_", "=", "-", "<br>", "<br/>", "\\", "/", "(", ")", "<br", "br>", "<p>", "<>", "<",
                ">"]
@@ -29,14 +30,17 @@ def make_prediction(document):
     document = divide_and_conquer(document)
     for word in document:
         if word in vocabulary:
-            prob_positive *= (vocabulary["word"]["posprob"])
-            prob_negative *= (vocabulary["word"]["negprob"])
-        if word not in vocabulary:
-            continue
+            #Add P(w | y={0,1})
+            prob_positive *= (vocabulary[word]["posprob"])
+            prob_negative *= (vocabulary[word]["negprob"])
+        else:
+            #Laplace smoothing when word unknown
+            prob_positive *= 1/(vocabulary["total_words"]["unique"] + vocabulary["pos:class"]["count"])
+            prob_negative *= 1/(vocabulary["total_words"]["unique"] + vocabulary["neg:class"]["count"])
     if prob_positive > prob_negative:
-        print("Positive")
+        return 1
     else:
-        print("Negative")
+        return 0
 
 make_prediction(document)
 
